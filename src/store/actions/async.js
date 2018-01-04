@@ -1,36 +1,35 @@
 import { setCustomersList } from './sync'
-import apolloClient from '../../apolloClient'
-import gql from 'graphql-tag'
+import getAllCustomers from '../../request/getAllCustomers'
+import generateCustomers from '../../request/generateCustomers'
+import truncateCustomers from '../../request/truncateCustomers'
 
 /**
  *
  */
 export function getCustomersList () {
   return async function (dispatch) {
-    let client = apolloClient.getClient()
-    let listCustomersQuery = gql`
-      query {
-        customers: listCustomers {
-          id,
-          name,
-          lastName,
-          mail,
-          addresses {
-            id,
-            street,
-            city,
-            zipcode
-          }
-        }
-      }
-    `
-    client.query({
-      query: listCustomersQuery
-    }).then((data) => {
-      console.log(JSON.stringify(data))
+    getAllCustomers().then((data) => {
       dispatch(setCustomersList(data))
-    }).catch((error) => {
-      console.log(error)
+    })
+  }
+}
+/**
+ *
+ */
+export function generateRandomCustomers () {
+  return async function (dispatch, getState) {
+    generateCustomers().then(() => {
+      dispatch(getCustomersList())
+    })
+  }
+}
+/**
+ *
+ */
+export function truncateAllCustomers () {
+  return async function (dispatch, getState) {
+    truncateCustomers().then(() => {
+      dispatch(getCustomersList())
     })
   }
 }

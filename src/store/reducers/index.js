@@ -31,6 +31,7 @@ function updateListCustomers (state, action) {
   let difference = {
     listCustomers: action.payload.data
   }
+  console.log(difference)
 
   let nexState = updateState(state, difference)
 
