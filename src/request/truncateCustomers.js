@@ -1,9 +1,9 @@
 import gql from 'graphql-tag'
-import apolloClient from './apolloClient'
+import { getClient } from './apolloClient'
 
 export default async function generateCustomers () {
   return new Promise((resolve, reject) => {
-    let client = apolloClient.getClient()
+    let client = getClient()
     let listCustomersMutation = gql`
       mutation {
         customers: truncateCustomers
