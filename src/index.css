@@ -15,12 +15,10 @@
 }
 button {
   padding: 5px;
+  margin-right: 10px;
 }
 .content {
   padding-top: 70px;
-}
-.header span {
-  margin-left: 10px;
 }
 table {
   border-collapse: collapse;
