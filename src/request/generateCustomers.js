@@ -6,7 +6,7 @@ export default async function generateCustomers () {
     let client = getClient()
     let listCustomersMutation = gql`
       mutation {
-        customers: generateRandomCustomers {
+        customers: generateRandomCustomer {
           id,
           name,
           lastName,

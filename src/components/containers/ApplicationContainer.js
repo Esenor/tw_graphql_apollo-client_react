@@ -1,6 +1,6 @@
 import Application from '../presentationals/Application'
 import { connect } from 'react-redux'
-import { generateRandomCustomers, truncateAllCustomers } from '../../store/actions/async'
+import { getCustomersList, generateRandomCustomers, truncateAllCustomers } from '../../store/actions/async'
 
 export default connect(
   function mapStateToProps (state) {
@@ -10,6 +10,7 @@ export default connect(
   },
   function mapDispatchToProps (dispatch) {
     return {
+      refreshCustomers: () => dispatch(getCustomersList()),
       generateRandomCustomers: () => dispatch(generateRandomCustomers()),
       truncateCustomers: () => dispatch(truncateAllCustomers())
     }

@@ -6,6 +6,7 @@ class Application extends Component {
     return (
       <div className="App">
         <section className="header">
+          <button onClick={this.props.refreshCustomers}>Refresh customers</button>
           <button onClick={this.props.generateRandomCustomers}>Generate random customers</button>
           <button onClick={this.props.truncateCustomers}>Truncate all customers</button>
           <span>{this.props.listCustomers.length} customer(s) regitered</span>
